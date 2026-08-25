@@ -1,0 +1,19 @@
+{
+  "model": "BAAI/bge-m3",
+  "use_fp16": true,
+  "batch_size": 24,
+  "device": "cuda",
+  "vault_path": "/home/agents/Obsidian/ecosystem-vault",
+  "index_path": "/home/agents/GitHub/vault-semantic-mcp/data/index",
+  "chunking": {
+    "max_chunk_chars": 512,
+    "overlap_chars": 50,
+    "split_by_heading": true
+  },
+  "embedding_dim": 1024,
+  "max_length": 256,
+  "projection_version": 1,
+  "chunking_version": 1,
+  "normalization": "l2",
+  "test_corpus_path": "/home/agents/GitHub/vault-semantic-mcp/data/test_corpus"
+}

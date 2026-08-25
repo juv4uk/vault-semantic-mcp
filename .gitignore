@@ -1,0 +1,8 @@
+# Embedding data — великі бінарні файли, зберігаються окремо
+data/sanskrit_embeddings.jsonl
+data/index-vault-live/
+data/index-uk-sa/
+data/test_corpus/
+*.npy
+__pycache__/
+*.pyc
