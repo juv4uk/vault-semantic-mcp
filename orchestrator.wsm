@@ -1,0 +1,17 @@
+; orchestrator.wsm
+; WSM (Lisp) Оркестратор для vault-semantic-mcp
+
+(def mcp-path "/home/agents/GitHub/vault-semantic-mcp/")
+
+(def apply-semantic-tags
+  (lambda ()
+    (print "1. Рахуємо семантику на GPU (BGE-M3)...")
+    ; Запускаємо python скрипт через bash, щоб передати змінні оточення
+    (process-run "bash" "-c" (string-append "export OMP_NUM_THREADS=2 && export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True && /home/agents/GitHub/FlagEmbedding/.venv/bin/python " mcp-path "classify_corpus_semantic.py"))
+    
+    (print "2. Вписуємо теги в Markdown-нотатки (Tag Applier)...")
+    (process-run "/home/agents/GitHub/FlagEmbedding/.venv/bin/python" (string-append mcp-path "apply_tags.py"))
+    
+    (print "Готово! Тексти успішно розмічені.")))
+
+(apply-semantic-tags)

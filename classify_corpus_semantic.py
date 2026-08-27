@@ -14,8 +14,7 @@ ONTO_DIR = os.path.join(VAULT, "🕉️ Онтологія")
 COGNATES = "/home/agents/GitHub/shiva-sutras/extensions/cognates-uk-sa.yaml"
 EMB_FILE = "/home/agents/GitHub/vault-semantic-mcp/data/sanskrit_embeddings.jsonl"
 OUT = "/home/agents/GitHub/shiva-sutras/ksetra/corpus_semantic_tags.suggestions.jsonl"
-TOP_K = 3
-THRESHOLD = 0.55
+THRESHOLD = 0.65
 STOPWEIGHT = {"vākya": 0.90}
 
 def read_note(path):
@@ -84,12 +83,13 @@ n_sugg = 0
 with open(OUT, 'w', encoding='utf-8') as out:
     for fi, sf in enumerate(files):
         sims = S[:, fi]
-        idx = np.argsort(-sims)[:TOP_K]
+        idx = np.argsort(-sims) # ВЕСЬ МАСИВ, БЕЗ ЛІМІТУ TOP_K
         tags = []
         for i in idx:
             concept = anchors[i][0]
             eff = float(sims[i]) * STOPWEIGHT.get(concept, 1.0)
-            if eff >= THRESHOLD and sims[i] >= THRESHOLD - 0.02:
+            # Принцип "більше 65-70% - більше міток"
+            if eff >= THRESHOLD:
                 tags.append({"concept": concept, "sim": round(float(sims[i]), 4)})
         rec = {"corpus_file": sf + ".md", "status": "semantic-suggest",
                "review": "pending-shiva-panini", "model": "BAAI/bge-m3",
