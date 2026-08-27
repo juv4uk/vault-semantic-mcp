@@ -6,3 +6,9 @@ data/test_corpus/
 *.npy
 __pycache__/
 *.pyc
+
+# Cloned external dictionary repos (own git history — not submodules,
+# not tracked here; see external-sources/README.md for provenance)
+external-sources/AMAR/
+external-sources/AP90/
+external-sources/MWS/
