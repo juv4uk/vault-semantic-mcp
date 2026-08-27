@@ -121,9 +121,11 @@ def parse_mw_keys(path):
 
 
 def ontology_slp1_terms():
+    # BUG FIXED 2026-08-28: "ai"/"au" (SLP1 E/O) were missing here too.
     IAST_TO_SLP1 = [
         ("kh", "K"), ("gh", "G"), ("ch", "C"), ("jh", "J"),
         ("ṭh", "W"), ("ḍh", "Q"), ("th", "T"), ("dh", "D"), ("ph", "P"), ("bh", "B"),
+        ("ai", "E"), ("au", "O"),
         ("ā", "A"), ("ī", "I"), ("ū", "U"), ("ṛ", "f"), ("ṝ", "F"),
         ("ḷ", "x"), ("ḹ", "X"), ("ṃ", "M"), ("ṁ", "M"), ("ḥ", "H"),
         ("ṅ", "N"), ("ñ", "Y"), ("ṭ", "w"), ("ḍ", "q"), ("ṇ", "R"),
