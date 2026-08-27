@@ -1,0 +1,24 @@
+[
+  {
+    "source_path": "/home/agents/Obsidian/ecosystem-vault/00 - Repositories.md",
+    "relative_path": "00 - Repositories.md",
+    "mtime": 1787350591.773494,
+    "content_hash": "root_sanskrit",
+    "chunk_id": 0,
+    "heading": "00 - Repositories",
+    "chunk_text": "---\ntype: index\n---\n\n# 00 — Repositories\n\nAll live repositories from `/home/agents/GitHub/` mirrored as documentation directories.\n\n## Core Ecosystem\n- [[my-lisp]] — 65 docs\n- [[cml]] — 5 docs\n- [[fpga-lisp]] — 7 docs\n- [[my-lisp-panini]] — 3 docs\n\n## Linguistics & Sanskrit\n- [[shiva-sutras]] — 2 docs\n\n## Tooling & IDE\n- [[my-idea]] — 6 docs\n- [[my-ide]] — 3 docs\n- [[tauricode]] — 37 docs\n\n## Infrastructure\n- [[FlagEmbedding]] — 4 docs\n- [[vault-semantic-mcp]] — 1 doc (manifest)\n\n## External / Forks\n- [[OpenManus]] — 10 docs\n\n---\n\n*Generated from live ~/GitHub directories*\n",
+    "char_start": 0,
+    "char_end": 580
+  },
+  {
+    "source_path": "/home/agents/Obsidian/ecosystem-vault/🖥️ Мої репозиторії.md",
+    "relative_path": "🖥️ Мої репозиторії.md",
+    "mtime": 1787347538.8993106,
+    "content_hash": "root_sanskrit",
+    "chunk_id": 0,
+    "heading": "🖥️ Мої репозиторії",
+    "chunk_text": "# 🖥️ Мої репозиторії\n\n> Центральний індекс всіх GitHub-репозиторіїв проекту.\n\n---\n\n## Core Ecosystem\n\n| Репозиторій | Опис | Шлях |\n|-------------|------|------|\n| **my-lisp** | Основна LISP-реалізація, компілятор, рантайм | `/home/agents/GitHub/my-lisp` |\n| **cml** | Categorical Machine Language — низькорівневий IR | `/home/agents/GitHub/cml` |\n| **fpga-lisp** | LISP для FPGA, аппаратна реалізація | `/home/agents/GitHub/fpga-lisp` |\n| **my-lisp-panini** | Паніні-граматика в my-lisp, Sanskrit parsing | `/home/agents/GitHub/my-lisp-panini` |\n| **my-idea** | IDE / редакційне середовище | `/home/agents/GitHub/my-idea` |\n| **tauricode** | Tauri-based крос-платформовий додаток | `/home/agents/GitHub/tauricode` |\n| **shiva-sutras** | Shiva Sutras корпус, онтологія, Ksetra | `/home/agents/GitHub/shiva-sutras` |\n\n---\n\n## Infrastructure\n\n| Репозиторій | Опис | Шлях |\n|-------------|------|------|\n| **FlagEmbedding** | BGE-M3 embeddings, семантичний пошук | `/home/agents/GitHub/FlagEmbedding` |\n| **vault-semantic-mcp** | MCP server для семантичного індексу vault | `/home/agents/GitHub/vault-semantic-mcp` |\n| **OpenManus** | Автономний агент (форк) | `/home/agents/GitHub/OpenManus` |\n\n---\n\n## Швидкі посилання (file://)\n\n- [my-lisp](file:///home/agents/GitHub/my-lisp)\n- [cml](file:///home/agents/GitHub/cml)\n- [fpga-lisp](file:///home/agents/GitHub/fpga-lisp)\n- [my-lisp-panini](file:///home/agents/GitHub/my-lisp-panini)\n- [my-idea](file:///home/agents/GitHub/my-idea)\n- [tauricode](file:///home/agents/GitHub/tauricode)\n- [shiva-sutras](file:///home/agents/GitHub/shiva-sutras)\n- [FlagEmbedding](file:///home/agents/GitHub/FlagEmbedding)\n- [vault-semantic-mcp](file:///home/agents/GitHub/vault-semantic-mcp)\n- [OpenManus](file:///home/agents/GitHub/OpenManus)\n\n---\n\n## GitHub Remote\n\nВсі репозиторії доступні за адресою:\n`https://github.com/<username>/<repo-name>`\n\n---\n\n*Автоматично згенеровано: 2026-08-22*\n",
+    "char_start": 0,
+    "char_end": 1920
+  }
+]

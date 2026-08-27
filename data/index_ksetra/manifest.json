@@ -1,0 +1,11 @@
+{
+  "vault_path": "/home/agents/Obsidian/ecosystem-vault",
+  "model": "BAAI/bge-m3",
+  "device": "cuda",
+  "index_timestamp": "2026-08-22T02:07:03.355244",
+  "projection_version": 1,
+  "chunking_version": 1,
+  "normalization": "l2",
+  "indexed_chunks": 0,
+  "embedding_dim": 0
+}

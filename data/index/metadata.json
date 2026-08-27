@@ -1,0 +1,68 @@
+[
+  {
+    "source_path": "data/test_corpus/sthana.md",
+    "relative_path": "sthana.md",
+    "mtime": 1787352464.357951,
+    "content_hash": "test",
+    "chunk_id": 0,
+    "heading": "sthana",
+    "chunk_text": "# sthāna — місце артикуляції\n## Sanskrit/Devanagari: स्थान\n## IAST: sthāna\n## Ukrainian: Місце артикуляції\n## English: Place of articulation\n## Domain: phonetics / vyākaraṇa\n",
+    "char_start": 0,
+    "char_end": 174
+  },
+  {
+    "source_path": "data/test_corpus/savarna.md",
+    "relative_path": "savarna.md",
+    "mtime": 1787352464.364413,
+    "content_hash": "test",
+    "chunk_id": 0,
+    "heading": "savarna",
+    "chunk_text": "# savarṇa — саварна\n## Sanskrit/Devanagari: सवर्ण\n## IAST: savarṇa\n## Ukrainian: Саварна\n## English: Savarna\n## Domain: vyākaraṇa / phonetics\n",
+    "char_start": 0,
+    "char_end": 142
+  },
+  {
+    "source_path": "data/test_corpus/sthana-place-of-articulation.md",
+    "relative_path": "sthana-place-of-articulation.md",
+    "mtime": 1787347650.1090856,
+    "content_hash": "test",
+    "chunk_id": 0,
+    "heading": "sthana-place-of-articulation",
+    "chunk_text": "# sthāna — місце артикуляції\n\n## Sanskrit / Devanagari\nस्थान\n\n## IAST\nsthāna\n\n## Ukrainian Gloss\nМісце артикуляції (у ротовій порожнині)\n\n## English Gloss\nPlace of articulation (in the oral cavity)\n\n## Domain\nphonetics / vyākaraṇa\n\n## Short Definition\nУ панінійській граматиці `sthāna` позначає точку артикуляції — місце в ротовій порожнині, де створюється перешкода для повітряного потоку при вимовленні звуку. Класичні п'ять основних місць: kanṭhya (гортанне), tālavya (небне), mūrdhanya (переднєбне), dantya (зубне), oṣṭhya (губне).\n\n## Related Concepts\n- prayatna — насилие артикуляції\n- karaṇa — артикуляторний орган\n- varṇa — фонема / звук\n- saṃskṛta — санскрит (мова)",
+    "char_start": 0,
+    "char_end": 674
+  },
+  {
+    "source_path": "data/test_corpus/anuvrtti.md",
+    "relative_path": "anuvrtti.md",
+    "mtime": 1787352464.3674417,
+    "content_hash": "test",
+    "chunk_id": 0,
+    "heading": "anuvrtti",
+    "chunk_text": "# anuvṛtti — анувртти\n## Sanskrit/Devanagari: अनुवृत्ति\n## IAST: anuvṛtti\n## Ukrainian: Анувртти\n## English: Anuvritti\n## Domain: vyākaraṇa\n",
+    "char_start": 0,
+    "char_end": 140
+  },
+  {
+    "source_path": "data/test_corpus/dhatu-verbal-root.md",
+    "relative_path": "dhatu-verbal-root.md",
+    "mtime": 1787347682.454104,
+    "content_hash": "test",
+    "chunk_id": 0,
+    "heading": "dhatu-verbal-root",
+    "chunk_text": "# dhātu — корінь / вербальний корінь\n\n## Sanskrit / Devanagari\nधातु\n\n## IAST\ndhātu\n\n## Ukrainian Gloss\nКорінь (дієслівний), вербальний корінь\n\n## English Gloss\nVerbal root, root\n\n## Domain\nvyākaraṇa / morphology\n\n## Short Definition\n`dhātu` — це найменша носема граматичного значення в санскриті, з якої утворюються дієслова (kriyā) та від них — іменники (prātipadika). У Dhatupāṭhe перелічено ~2000 коренів, розподілених по 10 ganaх (класах). Кожен dhātu має фіксоване значення (artha) і морфологічну поведінку.\n\n## Related Concepts\n- kriyā — дія / дієслово\n- prātipadika — іменникова основа\n- gaṇa — клас коренів\n- dhātupāṭha — список коренів\n- upasarga — преверб / префікс",
+    "char_start": 0,
+    "char_end": 675
+  },
+  {
+    "source_path": "data/test_corpus/pratyahara.md",
+    "relative_path": "pratyahara.md",
+    "mtime": 1787352464.3614132,
+    "content_hash": "test",
+    "chunk_id": 0,
+    "heading": "pratyahara",
+    "chunk_text": "# pratyāhāra — пратьяхара\n## Sanskrit/Devanagari: प्रत्याहार\n## IAST: pratyāhāra\n## Ukrainian: Пратяхара\n## English: Pratyahara\n## Domain: vyākaraṇa\n",
+    "char_start": 0,
+    "char_end": 149
+  }
+]
