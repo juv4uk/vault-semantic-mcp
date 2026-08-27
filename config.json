@@ -3,7 +3,7 @@
   "use_fp16": true,
   "batch_size": 24,
   "device": "cuda",
-  "vault_path": "/home/agents/Obsidian/ecosystem-vault",
+  "vault_path": "/mnt/c/Users/user/Downloads/chatGPT-2023-2026/Obsidian",
   "index_path": "/home/agents/GitHub/vault-semantic-mcp/data/index",
   "chunking": {
     "max_chunk_chars": 512,
