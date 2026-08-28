@@ -16,6 +16,8 @@ DRY RUN BY DEFAULT.
 """
 import os, re, sys
 
+from sanskrit_transliteration import slp1_to_iast
+
 ONTO_DIR = "/mnt/c/Users/user/Downloads/chatGPT-2023-2026/Obsidian/🕉️ Онтологія"
 MW_FILE = "/home/agents/GitHub/vault-semantic-mcp/external-sources/MWS/mwtranscode/mw.txt"
 
@@ -26,30 +28,6 @@ SELECTED = [
     "prajYApAramitA", "sADu", "anuvyAKyAna", "pfzWa", "veda", "devI",
     "nyAyasuDA", "vEdya", "kulaputra", "vastu", "devatA", "kOSika",
 ]
-
-SLP1_TO_IAST = [
-    ("K", "kh"), ("G", "gh"), ("C", "ch"), ("J", "jh"),
-    ("W", "ṭh"), ("Q", "ḍh"), ("T", "th"), ("D", "dh"), ("P", "ph"), ("B", "bh"),
-    ("A", "ā"), ("I", "ī"), ("U", "ū"), ("f", "ṛ"), ("F", "ṝ"),
-    ("x", "ḷ"), ("X", "ḹ"), ("E", "ai"), ("O", "au"), ("M", "ṃ"), ("H", "ḥ"),
-    ("N", "ṅ"), ("Y", "ñ"), ("w", "ṭ"), ("q", "ḍ"), ("R", "ṇ"),
-    ("S", "ś"), ("z", "ṣ"),
-]
-
-
-def slp1_to_iast(term):
-    # two-char SLP1 codes don't exist (SLP1 is one-char-per-phoneme),
-    # so a straight single-pass replace is safe here (unlike IAST->SLP1
-    # which had to handle multi-char IAST digraphs).
-    out = []
-    for ch in term:
-        mapped = ch
-        for slp1, iast in SLP1_TO_IAST:
-            if ch == slp1:
-                mapped = iast
-                break
-        out.append(mapped)
-    return "".join(out)
 
 
 def clean_mw_body(text):

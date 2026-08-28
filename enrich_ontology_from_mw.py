@@ -19,30 +19,12 @@ default to caution same as apply_vault_tags.py.
 """
 import json, os, re, sys
 
+from sanskrit_transliteration import iast_to_slp1
+
 VAULT = "/mnt/c/Users/user/Downloads/chatGPT-2023-2026/Obsidian"
 ONTO_DIR = os.path.join(VAULT, "🕉️ Онтологія")
 MW_FILE = "/home/agents/GitHub/vault-semantic-mcp/external-sources/MWS/mwtranscode/mw.txt"
 OUT_REPORT = "/home/agents/GitHub/vault-semantic-mcp/data/mw_enrichment_report.jsonl"
-
-# ---- IAST -> SLP1, deterministic, longest-match-first ----
-# BUG FIXED 2026-08-28: "ai"/"au" diphthongs (SLP1 E/O) were missing --
-# affected auṣadha.md and vaiśeṣika.md, both false MW-not-found results.
-IAST_TO_SLP1 = [
-    ("kh", "K"), ("gh", "G"), ("ch", "C"), ("jh", "J"),
-    ("ṭh", "W"), ("ḍh", "Q"), ("th", "T"), ("dh", "D"), ("ph", "P"), ("bh", "B"),
-    ("ai", "E"), ("au", "O"),
-    ("ā", "A"), ("ī", "I"), ("ū", "U"), ("ṛ", "f"), ("ṝ", "F"),
-    ("ḷ", "x"), ("ḹ", "X"), ("ṃ", "M"), ("ṁ", "M"), ("ḥ", "H"),
-    ("ṅ", "N"), ("ñ", "Y"), ("ṭ", "w"), ("ḍ", "q"), ("ṇ", "R"),
-    ("ś", "S"), ("ṣ", "z"),
-]
-
-
-def iast_to_slp1(term):
-    t = term
-    for iast, slp1 in IAST_TO_SLP1:
-        t = t.replace(iast, slp1)
-    return t
 
 
 def clean_mw_body(text):

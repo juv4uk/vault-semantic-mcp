@@ -20,79 +20,12 @@ this repo.
 import json, os, re, sys
 from collections import Counter
 
+from sanskrit_transliteration import deva_to_slp1, iast_to_slp1
+
 CORPUS_DIR = "/home/agents/GitHub/shiva-sutras/ksetra/sanskritworld_texts"
 ONTO_DIR = "/mnt/c/Users/user/Downloads/chatGPT-2023-2026/Obsidian/🕉️ Онтологія"
 MW_FILE = "/home/agents/GitHub/vault-semantic-mcp/external-sources/MWS/mwtranscode/mw.txt"
 OUT = "/home/agents/GitHub/vault-semantic-mcp/data/new_concept_candidates.jsonl"
-
-# ---- Devanagari -> SLP1 (deterministic, standard mapping) ----
-VOWELS_INDEP = {
-    "अ": "a", "आ": "A", "इ": "i", "ई": "I", "उ": "u", "ऊ": "U",
-    "ऋ": "f", "ॠ": "F", "ऌ": "x", "ॡ": "X",
-    "ए": "e", "ऐ": "E", "ओ": "o", "औ": "O",
-}
-MATRAS = {
-    "ा": "A", "ि": "i", "ी": "I", "ु": "u", "ू": "U",
-    "ृ": "f", "ॄ": "F", "ॢ": "x", "ॣ": "X",
-    "े": "e", "ै": "E", "ो": "o", "ौ": "O",
-}
-CONSONANTS = {
-    "क": "k", "ख": "K", "ग": "g", "घ": "G", "ङ": "N",
-    "च": "c", "छ": "C", "ज": "j", "झ": "J", "ञ": "Y",
-    "ट": "w", "ठ": "W", "ड": "q", "ढ": "Q", "ण": "R",
-    "त": "t", "थ": "T", "द": "d", "ध": "D", "न": "n",
-    "प": "p", "फ": "P", "ब": "b", "भ": "B", "म": "m",
-    "य": "y", "र": "r", "ल": "l", "व": "v",
-    "श": "S", "ष": "z", "स": "s", "ह": "h",
-    "ळ": "L",
-}
-VIRAMA = "्"
-ANUSVARA_M = "ं"
-VISARGA_H = "ः"
-AVAGRAHA = "ऽ"
-CANDRABINDU = "ँ"
-
-
-def deva_to_slp1(text):
-    out = []
-    i = 0
-    n = len(text)
-    while i < n:
-        ch = text[i]
-        if ch in CONSONANTS:
-            out.append(CONSONANTS[ch])
-            j = i + 1
-            if j < n and text[j] == VIRAMA:
-                i = j + 1
-                continue
-            if j < n and text[j] in MATRAS:
-                out.append(MATRAS[text[j]])
-                i = j + 1
-                continue
-            out.append("a")  # inherent vowel
-            i += 1
-            continue
-        if ch in VOWELS_INDEP:
-            out.append(VOWELS_INDEP[ch])
-            i += 1
-            continue
-        if ch == ANUSVARA_M:
-            out.append("M"); i += 1; continue
-        if ch == VISARGA_H:
-            out.append("H"); i += 1; continue
-        if ch == AVAGRAHA:
-            out.append("'"); i += 1; continue
-        if ch == CANDRABINDU:
-            out.append("~"); i += 1; continue
-        if ch.isspace() or ch in ".,;।॥\"'()[]{}0123456789":
-            out.append(" ")
-            i += 1
-            continue
-        # unknown char (Latin, punctuation, etc.) -- treat as separator
-        out.append(" ")
-        i += 1
-    return "".join(out)
-
 
 CONTENT_POS = {"m.", "f.", "n.", "mfn.", "mf.", "mn.", "fn."}  # nouns/adjectives only
 
@@ -121,25 +54,11 @@ def parse_mw_keys(path):
 
 
 def ontology_slp1_terms():
-    # BUG FIXED 2026-08-28: "ai"/"au" (SLP1 E/O) were missing here too.
-    IAST_TO_SLP1 = [
-        ("kh", "K"), ("gh", "G"), ("ch", "C"), ("jh", "J"),
-        ("ṭh", "W"), ("ḍh", "Q"), ("th", "T"), ("dh", "D"), ("ph", "P"), ("bh", "B"),
-        ("ai", "E"), ("au", "O"),
-        ("ā", "A"), ("ī", "I"), ("ū", "U"), ("ṛ", "f"), ("ṝ", "F"),
-        ("ḷ", "x"), ("ḹ", "X"), ("ṃ", "M"), ("ṁ", "M"), ("ḥ", "H"),
-        ("ṅ", "N"), ("ñ", "Y"), ("ṭ", "w"), ("ḍ", "q"), ("ṇ", "R"),
-        ("ś", "S"), ("ṣ", "z"),
-    ]
     covered = set()
     for f in os.listdir(ONTO_DIR):
         if not f.endswith(".md"):
             continue
-        term = f[:-3]
-        t = term
-        for iast, slp1 in IAST_TO_SLP1:
-            t = t.replace(iast, slp1)
-        covered.add(t)
+        covered.add(iast_to_slp1(f[:-3]))
     return covered
 
 
