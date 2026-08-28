@@ -1,15 +1,24 @@
 #!/usr/bin/env python3
 """Embed the ENTIRE live Obsidian vault (Windows /mnt/c path) into a
-semantic search index. Excludes Corpus_IAST (147MB corpus texts already
-covered by sanskrit_embeddings.jsonl from SOURCE Devanagari).
+semantic search index.
 
-BUG FOUND 2026-08-28: "🕉️ Онтологія" (the anchor/concept source itself)
-and "Templates" were NOT excluded -- after MW enrichment, each concept
-note is full of cross-references to dozens of other Sanskrit terms
-(MW glosses cite related concepts constantly), so classifying the
-Ontology folder against its own anchor set produced self-referential
-breadth explosions (single-chunk notes matching 100-200+ concepts).
-Excluded now; the classifier's anchors already come directly from this
+2026-08-28: Corpus_IAST (146MB, 636 files, at
+"🤖 Claude — shiva-sutras/Ksetra/Corpus_IAST" -- an IAST-transliterated
+mirror of the same corpus already embedded separately from Devanagari
+source via embed_corpus.py/sanskrit_embeddings.jsonl) was previously
+excluded to avoid double-embedding the same underlying texts. Owner
+explicitly asked to include it now, so it's no longer excluded --
+note this means the same corpus now exists in two separate embedding
+indexes (this vault-wide one, and the corpus-specific one), by intent.
+
+BUG FOUND 2026-08-28 (still fixed, unrelated to the above): "🕉️
+Онтологія" (the anchor/concept source itself) and "Templates" were NOT
+excluded -- after MW enrichment, each concept note is full of
+cross-references to dozens of other Sanskrit terms (MW glosses cite
+related concepts constantly), so classifying the Ontology folder
+against its own anchor set produced self-referential breadth
+explosions (single-chunk notes matching 100-200+ concepts). Stays
+excluded; the classifier's anchors already come directly from this
 folder, it should never also be treated as ordinary vault content to
 tag."""
 import json, os, sys, hashlib
@@ -17,7 +26,7 @@ import numpy as np
 
 VAULT = "/mnt/c/Users/user/Downloads/chatGPT-2023-2026/Obsidian"
 OUT_DIR = "/home/agents/GitHub/vault-semantic-mcp/data/index-vault-live"
-EXCLUDE_PARTS = ("Corpus_IAST", "node_modules", ".git", ".obsidian", ".gemini",
+EXCLUDE_PARTS = ("node_modules", ".git", ".obsidian", ".gemini",
                   "🕉️ Онтологія", "Templates")
 
 def iter_notes():
