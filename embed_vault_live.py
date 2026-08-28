@@ -1,13 +1,24 @@
 #!/usr/bin/env python3
 """Embed the ENTIRE live Obsidian vault (Windows /mnt/c path) into a
 semantic search index. Excludes Corpus_IAST (147MB corpus texts already
-covered by sanskrit_embeddings.jsonl from SOURCE Devanagari)."""
+covered by sanskrit_embeddings.jsonl from SOURCE Devanagari).
+
+BUG FOUND 2026-08-28: "🕉️ Онтологія" (the anchor/concept source itself)
+and "Templates" were NOT excluded -- after MW enrichment, each concept
+note is full of cross-references to dozens of other Sanskrit terms
+(MW glosses cite related concepts constantly), so classifying the
+Ontology folder against its own anchor set produced self-referential
+breadth explosions (single-chunk notes matching 100-200+ concepts).
+Excluded now; the classifier's anchors already come directly from this
+folder, it should never also be treated as ordinary vault content to
+tag."""
 import json, os, sys, hashlib
 import numpy as np
 
 VAULT = "/mnt/c/Users/user/Downloads/chatGPT-2023-2026/Obsidian"
 OUT_DIR = "/home/agents/GitHub/vault-semantic-mcp/data/index-vault-live"
-EXCLUDE_PARTS = ("Corpus_IAST", "node_modules", ".git", ".obsidian", ".gemini")
+EXCLUDE_PARTS = ("Corpus_IAST", "node_modules", ".git", ".obsidian", ".gemini",
+                  "🕉️ Онтологія", "Templates")
 
 def iter_notes():
     for root, dirs, files in os.walk(VAULT):
@@ -69,7 +80,7 @@ for path in iter_notes():
     chunks = chunk(text)
     if not chunks:
         continue
-    res = emb.model.encode(chunks, batch_size=16, max_length=512,
+    res = emb.model.encode(chunks, batch_size=48, max_length=512,
                            return_dense=True, return_sparse=False,
                            return_colbert_vecs=False)
     vecs = np.asarray(res['dense_vecs'], dtype=np.float32)

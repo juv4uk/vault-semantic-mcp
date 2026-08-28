@@ -32,7 +32,8 @@ VAULT = "/mnt/c/Users/user/Downloads/chatGPT-2023-2026/Obsidian"
 ONTO_DIR = os.path.join(VAULT, "🕉️ Онтологія")
 EMB_FILE = "/home/agents/GitHub/vault-semantic-mcp/data/index-vault-live/vault_embeddings.jsonl"
 OUT = "/home/agents/GitHub/vault-semantic-mcp/data/vault_semantic_tags_v2.suggestions.jsonl"
-EXCLUDE_PARTS = ("Corpus_IAST", "node_modules", ".git", ".obsidian", ".gemini")
+EXCLUDE_PARTS = ("Corpus_IAST", "node_modules", ".git", ".obsidian", ".gemini",
+                  "🕉️ Онтологія", "Templates")
 
 HIT_THRESHOLD = 0.60           # predicted, not calibrated -- see design doc
 CORE_PEAK, CORE_REL = 0.72, 2.0
