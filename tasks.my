@@ -1,0 +1,11 @@
+; tasks.my — durable task plan for vault-semantic-mcp.
+
+((tasks . (
+  ("VAULT-SEMANTIC-MCP-WRITE-README" . (
+    (priority . 6.0)
+    (capabilities . (documentation python vault))
+    (origin . vault-semantic-mcp)
+    (description . "Real, actively-present tooling (apply_tags.py, classify_corpus_semantic.py, embed_corpus.py, discover_new_concepts.py, and more) with AGENTS.md but no README -- a future agent or the owner has no single entry point explaining what this MCP server does, what vault it operates on, or how the scripts relate to each other. Write a README covering: purpose, the actual pipeline order these scripts run in, and what config.json controls.")
+    (done . ())
+  ))
+)))
