@@ -1,0 +1,19 @@
+{
+  "policy_version": "shunya-bhumi-access-v0",
+  "default_capabilities": ["read", "search"],
+  "promoted_capabilities": ["create", "write"],
+  "promotion_requires_explicit_owner_approval": true,
+  "protected_paths": [
+    "00-genesis/**",
+    "10-journal/**/raw/**",
+    "**/raw-observations/**"
+  ],
+  "protected_path_behavior": "read-only-unless-explicitly-authorized",
+  "epistemic_status": {
+    "preserve_on_retrieval": true,
+    "allowed": ["GIVEN", "OBSERVED", "INFERRED", "HYPOTHESIZED", "UNKNOWN", "UNRESOLVED"],
+    "automatic_promotion": false
+  },
+  "failure_mode": "BLOCKED",
+  "notes": "Policy declaration for agent/vault integration. Enforcement code must cite this policy and be tested separately."
+}
